@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Sonnentau — Jyotiṣa · Remedial Arts · Delphic Counsel</title>
+<meta name="description" content="Atelier Sonnentau is a private Vedic astrology, remedial, and Delphic counsel practice. We offer individually researched and written chart readings, predictive work, synastry, and remedial counsel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   ATELIER SONNENTAU — DESIGN TOKENS
+   ============================================================ */
+
+:root{
+  --ivory:#fffdf8;
+  --white:#ffffff;
+  --powder:#e7f1f5;
+  --mist:#d8e8ef;
+  --palest:#f0f6f8;
+  --red:#bd4141;
+  --red-bright:#cc4a45;
+  --yellow:#f6e7aa;
+  --yellow-pale:#fbf4d6;
+  --ink:#242a38;
+  --ink-soft:#4a5165;
+  --navy:#2b3a55;
+  --navy-mist:#d6deea;
+  --navy-pale:#e6ebf3;
+  --serif-display:'Cormorant Garamond', Georgia, serif;
+  --serif-body:'EB Garamond', Georgia, serif;
+  --script:'Tangerine', cursive;
+  --max:1180px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:var(--serif-body);
+  font-size:18px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:var(--serif-display);
+  font-weight:500;
+  line-height:1.15;
+  margin:0 0 0.5em;
+  color:var(--navy);
+}
+h1{font-size:clamp(2.6rem,5vw,4.4rem); font-weight:500;}
+h2{font-size:clamp(1.9rem,3.4vw,2.7rem);}
+h3{font-size:clamp(1.3rem,2.2vw,1.6rem);}
+p{margin:0 0 1.1em;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;}
+:focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+
+.container{max-width:var(--max); margin:0 auto; padding:0 28px;}
+.container--narrow{max-width:720px;}
+
+.eyebrow{
+  font-family:var(--serif-body);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-size:0.78rem;
+  color:var(--red);
+  margin:0 0 0.9em;
+  font-style:italic;
+}
+
+.section{padding:88px 0;}
+.section--tight{padding:64px 0;}
+.bg-ivory{background:var(--ivory);}
+.bg-white{background:var(--white);}
+.bg-powder{background:var(--powder);}
+.bg-palest{background:var(--palest);}
+.bg-navy-pale{background:var(--navy-pale);}
+.bg-yellow{background:var(--yellow-pale);}
+
+.rule{
+  border:none;
+  border-top:1px solid rgba(37,40,43,0.14);
+  margin:2.4em 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  font-family:var(--serif-body);
+  font-size:0.95rem;
+  letter-spacing:0.04em;
+  padding:14px 30px;
+  border-radius:2px;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn-primary{
+  background:var(--red);
+  color:var(--ivory);
+  border-color:var(--red);
+}
+.btn-primary{position:relative; overflow:hidden;}
+.btn-primary::before{
+  content:""; position:absolute; top:0; left:-45%; width:45%; height:1px;
+  background:linear-gradient(90deg, rgba(255,253,248,0) 0%, rgba(255,253,248,0.95) 50%, rgba(255,253,248,0) 100%);
+  opacity:0; pointer-events:none;
+}
+@keyframes edgeSweep{from{left:-45%; opacity:1;} to{left:100%; opacity:0;}}
+.btn-primary:hover, .btn-primary:focus-visible, .btn-primary:active{background:#a83636; border-color:#a83636;}
+.btn-primary:hover::before, .btn-primary:focus-visible::before, .btn-primary:active::before{animation:edgeSweep 0.9s ease-out 1 forwards;}
+.btn-secondary{
+  background:transparent;
+  color:var(--navy);
+  border-color:var(--navy);
+}
+.btn-secondary:hover{background:var(--navy); color:var(--ivory);}
+.btn-ghost{
+  background:transparent;
+  border-color:var(--red);
+  color:var(--red);
+}
+.btn-ghost:hover{background:var(--red); color:var(--ivory);}
+.btn-pale{
+  background:var(--yellow-pale);
+  color:var(--ink);
+  border-color:var(--yellow);
+}
+.btn-pale:hover{background:var(--yellow); border-color:var(--red);}
+.btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:#fffdf8;
+  border-bottom:1px solid rgba(37,40,43,0.08);
+}
+.nav-scrim{
+  display:none;
+  position:fixed; top:0; right:0; bottom:0; left:0;
+  background:rgba(37,40,43,0.38);
+  z-index:150;
+}
+.nav-scrim.is-open{display:block;}
+body.nav-open{overflow:hidden;}
+.nav-inner{
+  max-width:var(--max); margin:0 auto; padding:14px 28px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.wordmark{
+  font-family:var(--script);
+  font-size:2.1rem;
+  color:var(--red);
+  text-decoration:none;
+  line-height:1;
+  letter-spacing:0.01em;
+}
+.nav-links{
+  display:flex; align-items:center; gap:30px;
+  list-style:none; margin:0; padding:0;
+}
+.nav-links a{
+  text-decoration:none;
+  font-size:0.86rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--navy);
+  padding:6px 2px;
+  border-bottom:1px solid transparent;
+  transition:border-color 0.2s ease, color 0.2s ease;
+}
+.nav-links a:hover, .nav-links a.is-active{
+  border-bottom-color:var(--red);
+  color:var(--red);
+}
+.nav-links a.nav-cta{
+  border:1px solid var(--red);
+  color:var(--red);
+  padding:9px 18px;
+  border-radius:2px;
+}
+.nav-links a.nav-cta:hover{background:var(--red); color:var(--ivory);}
+.nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px; position:relative; z-index:300;}
+.nav-toggle span{display:block; width:24px; height:1.5px; background:var(--ink); margin:5px 0; transition:transform 0.2s ease, opacity 0.2s ease;}
+.nav-toggle.is-open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-toggle.is-open span:nth-child(2){opacity:0;}
+.nav-toggle.is-open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+@media (max-width:900px){
+  .nav-links{
+    position:fixed; top:0; right:0; bottom:0;
+    width:78vw; max-width:340px;
+    height:100vh; height:100dvh;
+    background:#fffdf8;
+    z-index:200;
+    overflow-y:auto;
+    flex-direction:column; align-items:flex-start;
+    padding:100px 32px 32px;
+    transform:translateX(100%);
+    transition:transform 0.28s ease;
+    box-shadow:-8px 0 30px rgba(0,0,0,0.12);
+    gap:26px;
+  }
+  .nav-links.is-open{transform:translateX(0);}
+  .nav-links a{font-size:1rem;}
+  .nav-links a.nav-cta{display:inline-block; white-space:nowrap; font-size:0.88rem; letter-spacing:0.08em; padding:10px 16px; margin-top:6px;}
+  .nav-toggle{display:block;}
+}
+
+/* ============================================================
+   HORIZON — signature atmospheric device
+   ============================================================ */
+.horizon{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% 118%, var(--yellow) 0%, rgba(246,231,170,0) 55%),
+    linear-gradient(180deg, #dcecf3 0%, #eef5f8 38%, var(--ivory) 78%);
+}
+.horizon__stars{position:absolute; inset:0; pointer-events:none; opacity:0.55;}
+.horizon__arc{position:absolute; inset:0; pointer-events:none; opacity:0.92;}
+
+/* ---------- HERO ---------- */
+.hero{padding:150px 0 140px; text-align:center;}
+.hero-inner{max-width:720px; margin:0 auto; position:relative; z-index:2;}
+.hero .wordmark-large{
+  font-family:var(--script);
+  font-size:clamp(3.8rem,10vw,6.8rem);
+  color:var(--red);
+  display:block;
+  margin-bottom:0.18em;
+  line-height:1;
+}
+.hero .subtitle{
+  font-family:var(--serif-body);
+  font-style:italic;
+  letter-spacing:0.08em;
+  color:var(--ink-soft);
+  font-size:1.02rem;
+  margin-bottom:2.4em;
+}
+.hero .practice-line{
+  font-family:var(--serif-display);
+  font-size:1.05rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-bottom:1.5em;
+}
+.hero p.lede{
+  font-size:1.16rem;
+  line-height:1.85;
+  color:var(--ink-soft);
+  max-width:590px;
+  margin:0 auto 2.8em;
+}
+.hero .btn-row{justify-content:center; gap:18px;}
+.hero-divider{
+  width:52px; height:1px;
+  background:var(--red);
+  opacity:0.55;
+  margin:0 auto 1.9em;
+}
+
+/* ---------- Foundations blocks (home) ---------- */
+.foundations-block{margin-bottom:60px;}
+.foundations-block:last-child{margin-bottom:0;}
+.foundations-block .eyebrow,
+.foundations-block h2,
+.foundations-block h3{text-align:center;}
+.foundations-block h2{margin-bottom:0.4em;}
+.foundations-block h3{margin-bottom:0.7em;}
+.foundations-block p{
+  color:var(--ink-soft);
+  font-size:1.02rem;
+  line-height:1.85;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:justify;
+  text-align-last:center;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  word-spacing:-0.01em;
+}
+
+/* ---------- Two column ---------- */
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+@media(max-width:820px){.two-col{grid-template-columns:1fr; gap:36px;}}
+
+.attentive-list{list-style:none; margin:0; padding:0; columns:2; column-gap:32px;}
+.attentive-list li{
+  break-inside:avoid;
+  padding:6px 0 6px 18px;
+  position:relative;
+  font-size:0.98rem;
+  color:var(--ink-soft);
+}
+.attentive-list li::before{content:"—"; position:absolute; left:0; color:var(--red);}
+@media(max-width:600px){.attentive-list{columns:1;}}
+
+/* ---------- Info / callout box ---------- */
+.info-box{
+  background:var(--yellow-pale);
+  border-left:3px solid var(--red);
+  padding:20px 26px;
+  font-size:0.94rem;
+  color:var(--ink-soft);
+  max-width:620px;
+  margin:40px auto 0;
+  text-align:left;
+}
+.info-box strong{color:var(--ink);}
+
+/* ---------- Books status band ---------- */
+.status-band{text-align:center; padding:80px 0;}
+.status-dot{
+  display:inline-block; width:8px; height:8px; border-radius:50%;
+  background:var(--red); margin-right:10px; vertical-align:middle;
+  box-shadow:0 0 0 4px rgba(189,65,65,0.14);
+}
+.status-band .status-title{
+  font-family:var(--serif-display);
+  font-size:2rem;
+  color:var(--navy);
+  display:inline-flex; align-items:center;
+  margin-bottom:0.4em;
+}
+.status-band.is-closed .status-dot{background:var(--ink-soft); box-shadow:0 0 0 4px rgba(37,40,43,0.08);}
+
+/* books open: dawn light slowly arrives; the dot breathes once every twelve seconds */
+.horizon--status{background:linear-gradient(180deg, #dcecf3 0%, #eef5f8 38%, var(--ivory) 78%);}
+.horizon--status::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(120% 90% at 50% 118%, var(--yellow) 0%, rgba(246,231,170,0) 55%);
+  opacity:0; transition:opacity 8s ease-out;
+}
+.horizon--status > *{position:relative; z-index:1;}
+.horizon--status.is-open::after{opacity:1;}
+.horizon--status.is-closed{background:linear-gradient(180deg, #d5e6f0 0%, #e2eef6 55%, #ecf3f8 100%);}
+@keyframes dotBreath{
+  0%{box-shadow:0 0 0 4px rgba(189,65,65,0.14);}
+  3%{box-shadow:0 0 0 6px rgba(189,65,65,0.22);}
+  9%{box-shadow:0 0 0 14px rgba(189,65,65,0);}
+  10%,100%{box-shadow:0 0 0 4px rgba(189,65,65,0.14);}
+}
+.horizon--status.is-open .status-dot{animation:dotBreath 12s ease-out infinite;}
+.status-band p{color:var(--ink-soft); max-width:420px; margin:0 auto 1.8em;}
+
+/* ============================================================
+   MENU PAGE
+   ============================================================ */
+.tariff-group{margin-bottom:56px;}
+.tariff-group__head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  border-bottom:1px solid var(--red); padding-bottom:10px; margin-bottom:6px;
+}
+.tariff-group__head h3{margin-bottom:0; letter-spacing:0.02em;}
+.tariff-note{font-size:0.85rem; font-style:italic; color:var(--ink-soft); margin-bottom:20px;}
+.tariff-row{
+  display:flex; justify-content:space-between; align-items:baseline;
+  gap:24px; padding:16px 0; border-bottom:1px dotted rgba(37,40,43,0.18);
+}
+.tariff-row:last-child{border-bottom:none;}
+.tariff-row__name{font-family:var(--serif-display); font-size:1.18rem; flex:1;}
+.tariff-row__desc{
+  display:block; font-family:var(--serif-body); font-size:0.92rem; color:var(--ink-soft); margin-top:3px;
+}
+.tariff-row__price{
+  font-family:var(--serif-display); color:var(--red); font-size:1.18rem; white-space:nowrap;
+}
+.tariff-panel{background:var(--navy-pale); padding:36px 40px; border-radius:2px;}
+.tariff-panel.alt{background:var(--yellow-pale);}
+@media(max-width:600px){.tariff-panel{padding:26px 22px;}}
+
+/* ---------- Menu price note ---------- */
+.price-note{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:10px;
+  background:var(--yellow-pale);
+  border:1px solid var(--yellow);
+  border-radius:3px;
+  padding:14px 24px;
+  margin:0 auto 48px;
+  max-width:720px;
+  text-align:center;
+  font-size:0.9rem;
+  color:var(--ink-soft);
+}
+.price-note__usd{
+  font-family:var(--serif-display);
+  font-size:1rem;
+  letter-spacing:0.04em;
+  color:var(--red);
+}
+.price-note__sep{color:var(--red); opacity:0.5;}
+@media(max-width:600px){
+  .price-note{flex-direction:column; gap:4px; padding:14px 18px;}
+  .price-note__sep{display:none;}
+}
+
+/* ---------- Steps ---------- */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:36px;}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.steps{grid-template-columns:1fr;}}
+.step .step-num{
+  font-family:var(--serif-display); font-style:italic; color:var(--red);
+  font-size:1.4rem; display:block; margin-bottom:0.4em;
+}
+.step h4{margin-bottom:0.3em; font-family:var(--serif-display); font-weight:500; font-size:1.15rem;}
+.step p{font-size:0.93rem; color:var(--ink-soft); margin-bottom:0;}
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-panel{
+  background:var(--white);
+  border:1px solid var(--navy-mist);
+  padding:48px;
+  max-width:720px;
+  margin:0 auto;
+}
+@media(max-width:600px){.form-panel{padding:30px 22px;}}
+.form-group{margin-bottom:26px;}
+.form-group > label{
+  display:block; font-size:0.85rem; letter-spacing:0.05em;
+  text-transform:uppercase; color:var(--navy); margin-bottom:8px;
+}
+.form-group .req{color:var(--red);}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea{
+  width:100%;
+  font-family:var(--serif-body);
+  font-size:1rem;
+  padding:12px 14px;
+  border:1px solid rgba(37,40,43,0.28);
+  background:var(--ivory);
+  border-radius:1px;
+}
+.form-group textarea{min-height:120px; resize:vertical;}
+.form-group input:focus, .form-group textarea:focus{border-color:var(--red); outline:none;}
+.form-hint{font-size:0.82rem; color:var(--ink-soft); margin-top:6px; font-style:italic;}
+.radio-set{display:flex; flex-direction:column; gap:10px;}
+.radio-option{display:flex; align-items:flex-start; gap:10px; font-size:0.98rem; cursor:pointer;}
+.radio-option input{margin-top:5px;}
+.checkbox-line{
+  display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--ink-soft); cursor:pointer;
+}
+.checkbox-line input{margin-top:4px;}
+.inline-note{
+  background:var(--yellow-pale);
+  border-left:3px solid var(--red);
+  padding:14px 18px;
+  font-size:0.92rem;
+  margin-top:10px;
+  display:none;
+}
+.inline-note.is-visible{display:block;}
+
+/* ---------- Card-style menu (no dropdown) ---------- */
+.menu-select{border:1px solid var(--navy-mist); border-radius:4px; overflow:hidden;}
+.menu-select__group-label{
+  background:var(--navy-pale);
+  color:var(--navy);
+  padding:10px 16px;
+  font-family:var(--serif-display);
+  font-size:0.98rem;
+  border-top:1px solid var(--mist);
+}
+.menu-select__group-label:first-child{border-top:none;}
+.menu-select__group-label em{
+  font-style:italic; color:var(--ink-soft); font-size:0.78rem; font-family:var(--serif-body);
+}
+.menu-option{
+  display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+  padding:12px 16px;
+  border-top:1px dotted rgba(37,40,43,0.15);
+  cursor:pointer;
+  background:var(--white);
+  font-size:0.98rem;
+}
+.menu-option:hover{background:var(--yellow-pale);}
+.menu-option.is-selected{background:var(--yellow-pale); box-shadow:inset 3px 0 0 var(--red);}
+.menu-option.is-locked{opacity:0.4; cursor:not-allowed; background:var(--white);}
+.menu-option.is-locked:hover{background:var(--white);}
+.menu-option.is-locked input{cursor:not-allowed;}
+.menu-option input{margin-right:10px;}
+.menu-option__price{color:var(--red); font-family:var(--serif-display); white-space:nowrap;}
+
+/* ---------- Add-on boxes ---------- */
+.addon-box{
+  background:var(--yellow-pale);
+  border:1px solid var(--yellow);
+  border-radius:4px;
+  padding:16px 18px;
+  margin-top:14px;
+}
+.addon-box label{
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:1rem; cursor:pointer; color:var(--ink);
+}
+.addon-box input{margin-top:5px;}
+.addon-box small{display:block; color:var(--ink-soft); font-size:0.85rem; margin-top:3px;}
+
+/* ---------- Payment method cards ---------- */
+.method-cards{display:flex; gap:16px; flex-wrap:wrap;}
+.method-card{
+  flex:1; min-width:210px;
+  border:2px solid var(--navy-mist);
+  background:var(--navy-pale);
+  padding:16px 18px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:1rem;
+  color:var(--ink);
+  transition:border-color 0.2s ease, background 0.2s ease;
+}
+.method-card:hover{background:var(--navy-mist);}
+.method-card.is-selected{border-color:var(--red); background:var(--yellow-pale);}
+.method-card input{margin-right:8px;}
+.method-card small{display:block; color:var(--ink-soft); font-size:0.82rem; margin-top:4px;}
+
+/* ---------- Live price estimate ---------- */
+.price-estimate{
+  background:linear-gradient(135deg, var(--yellow-pale) 0%, var(--navy-pale) 100%);
+  border:1px solid var(--yellow);
+  border-radius:4px;
+  padding:24px 26px;
+  margin:30px 0;
+}
+.price-estimate__row{
+  display:flex; justify-content:space-between; gap:16px;
+  font-size:0.92rem; color:var(--ink-soft); padding:4px 0;
+}
+.price-estimate__empty{color:var(--ink-soft); font-style:italic; font-size:0.92rem; margin:0;}
+.price-estimate__total{
+  display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  font-family:var(--serif-display); font-size:1.4rem; color:var(--red);
+  border-top:1px solid rgba(189,65,65,0.3); margin-top:12px; padding-top:12px;
+}
+
+.confirmation-panel{text-align:center; padding:60px 20px; display:none;}
+.confirmation-panel.is-visible{display:block;}
+.confirmation-panel p{max-width:480px; margin:0 auto; color:var(--ink-soft);}
+
+/* ---------- FAQ ---------- */
+.faq-item{border-bottom:1px solid var(--navy-mist); padding:22px 0;}
+.faq-item h4{font-family:var(--serif-display); font-weight:500; font-size:1.1rem; margin-bottom:0.4em;}
+.faq-item p{color:var(--ink-soft); margin-bottom:0; font-size:0.97rem;}
+
+/* ---------- Justified body copy ---------- */
+.bio-text{
+  font-size:1.06rem;
+  line-height:1.85;
+  text-align:justify;
+  text-align-last:left;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
+
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--navy); color:var(--ivory); padding:64px 0 30px;}
+.footer-inner{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px;
+  padding-bottom:40px; border-bottom:1px solid rgba(255,253,248,0.15);
+}
+.footer-inner .wordmark{color:var(--yellow);}
+.footer-inner p{color:rgba(255,253,248,0.65); max-width:320px; font-size:0.92rem;}
+.footer-links{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.footer-links a{text-decoration:none; color:rgba(255,253,248,0.85); font-size:0.92rem;}
+.footer-links a:hover{color:var(--yellow);}
+.footer-bottom{
+  display:flex; justify-content:center; flex-wrap:wrap; gap:12px;
+  padding-top:24px; font-size:0.78rem; color:rgba(255,253,248,0.45);
+}
+.footer-bottom a{color:rgba(255,253,248,0.55); text-decoration:none; margin-right:18px;}
+
+/* ---------- Home accordion ---------- */
+.accordion{border-top:1px solid rgba(37,40,43,0.14);}
+.acc{border-bottom:1px solid rgba(37,40,43,0.14); padding:0 12px; margin:0 -12px; border-radius:3px; transition:background 350ms ease;}
+.acc:hover{background:rgba(198,211,230,0.6);}
+.acc__btn{
+  width:100%; background:none; border:none; cursor:pointer; text-align:left;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:22px 4px;
+  font-family:var(--serif-display); font-size:1.45rem; color:var(--navy);
+  transition:color 0.2s ease;
+}
+.acc__btn:hover, .acc__btn[aria-expanded="true"]{color:var(--red);}
+.acc__icon{position:relative; width:14px; height:14px; flex:none;}
+.acc__icon::before, .acc__icon::after{content:""; position:absolute; background:var(--red); transition:transform 0.25s ease;}
+.acc__icon::before{left:0; top:6.5px; width:14px; height:1px;}
+.acc__icon::after{left:6.5px; top:0; width:1px; height:14px;}
+.acc__btn[aria-expanded="true"] .acc__icon::after{transform:rotate(90deg);}
+.acc__panel{max-height:0; overflow:hidden; transition:max-height 0.35s ease;}
+.acc__body{padding:0 4px 28px;}
+.acc__body p{
+  color:var(--ink-soft); font-size:1.02rem; line-height:1.85; margin:0;
+  text-align:justify; text-align-last:left; hyphens:auto; -webkit-hyphens:auto;
+}
+.acc__body .attentive-list{margin-top:4px;}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{transition:none !important; animation:none !important;}
+}
+
+/* ---------- Menu page: navy ground ---------- */
+#page-menu{background:#33445f; color:#f7f3ea; position:relative;}
+#page-menu > section{position:relative; z-index:1;}
+.menu-band{position:relative; overflow:hidden;}
+.menu-band .container{position:relative; z-index:2;}
+
+/* stars: tiny four-point sparks and pinpoints, each on its own twinkle */
+.menu-sky{position:absolute; top:0; right:0; bottom:0; left:0; z-index:0; pointer-events:none;}
+.menu-sky .star{
+  position:absolute; width:7px; height:7px; transform:scale(var(--s,1));
+  background:
+    linear-gradient(#f4efe4,#f4efe4) center/1px 100% no-repeat,
+    linear-gradient(#f4efe4,#f4efe4) center/100% 1px no-repeat;
+  opacity:0.55; animation:twinkle var(--d,8s) ease-in-out infinite;
+}
+.menu-sky .star.dot{width:2px; height:2px; background:#f4efe4; border-radius:50%; opacity:0.45;}
+@keyframes twinkle{0%,100%{opacity:0.55;} 50%{opacity:0.22;}}
+
+/* the moon: upper-right, drifting along a short curve, 30s out and 30s back */
+.menu-band .moon{
+  position:absolute; top:18px; right:7%; width:150px; height:150px;
+  z-index:1; cursor:default;
+  animation:moonDrift 60s ease-in-out infinite;
+}
+@keyframes moonDrift{
+  0%  {transform:translate(0,0);}
+  25% {transform:translate(-12px,-7px);}
+  50% {transform:translate(-30px,-2px);}
+  75% {transform:translate(-16px,5px);}
+  100%{transform:translate(0,0);}
+}
+.moon > span{position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%,-50%);}
+/* pearlescent halo, breathing almost imperceptibly */
+.moon-halo{
+  width:150px; height:150px;
+  background:radial-gradient(circle, rgba(246,241,230,0.42) 0%, rgba(234,230,223,0.14) 48%, rgba(234,230,223,0) 70%);
+  animation:haloBreath 14s ease-in-out infinite;
+}
+@keyframes haloBreath{0%,100%{transform:translate(-50%,-50%) scale(1);} 50%{transform:translate(-50%,-50%) scale(1.07);}}
+/* the occasional inner blush: shell pink, then champagne, mostly invisible */
+.moon-blush{
+  width:110px; height:110px; opacity:0;
+  background:radial-gradient(circle, rgba(243,220,216,0.55) 0%, rgba(243,220,216,0) 65%);
+  animation:blush 46s ease-in-out infinite;
+}
+@keyframes blush{
+  0%,18%{opacity:0;} 28%{opacity:0.5;} 40%{opacity:0;}
+  66%{opacity:0;} 78%{opacity:0.4; background:radial-gradient(circle, rgba(242,230,207,0.5) 0%, rgba(242,230,207,0) 65%);} 90%,100%{opacity:0;}
+}
+/* hover bloom: rose and warm ivory, like the menu rows */
+.moon-bloom{
+  width:100px; height:100px; opacity:0;
+  background:radial-gradient(circle at 42% 50%, rgba(243,217,212,0.6) 0%, rgba(246,239,224,0.3) 45%, rgba(246,239,224,0) 72%);
+  transition:opacity 550ms ease;
+}
+/* engraved crescent: cool ivory-grey disc, navy overlap cut in from the upper right */
+.moon-disc{
+  width:48px; height:48px; overflow:hidden;
+  background:#dcdfe4; border:1px solid #b7bcc6;
+  box-shadow:inset 3px 0 0 -2px rgba(198,202,211,0.7), inset 6px 0 0 -5px rgba(198,202,211,0.45);
+  transition:transform 550ms ease, background 550ms ease;
+}
+.moon-disc::after{
+  content:""; position:absolute; width:46px; height:46px; border-radius:50%;
+  left:16px; top:-8px; background:#33445f;
+}
+.moon:hover .moon-bloom, .moon.is-lit .moon-bloom{opacity:1;}
+.moon:hover .moon-disc, .moon.is-lit .moon-disc{transform:translate(-50%,calc(-50% - 1px)); background:#e8e6e2;}
+/* dust: faint points wandering independently */
+.moon .dust{
+  position:absolute; width:2px; height:2px; border-radius:50%; background:#e6e2d8; opacity:0.35;
+  animation:dust var(--d,24s) ease-in-out infinite;
+}
+@keyframes dust{
+  0%,100%{transform:translate(0,0);} 33%{transform:translate(4px,-3px);} 66%{transform:translate(-3px,3px);}
+}
+@media (max-width:700px){
+  .menu-band .moon{width:110px; height:110px; right:2%; top:8px;}
+  .moon-halo{width:110px; height:110px;}
+  .moon-blush{width:80px; height:80px;}
+  .moon-bloom{width:74px; height:74px;}
+  .moon-disc{width:36px; height:36px;}
+  .moon-disc::after{width:34px; height:34px; left:12px; top:-6px;}
+}
+
+#page-menu .bg-navy-pale{background:rgba(255,253,248,0.05); border-bottom:1px solid rgba(255,253,248,0.1);}
+#page-menu .bg-white{background:transparent;}
+#page-menu h1, #page-menu h3, #page-menu .tariff-row__name{color:#f7f3ea;}
+#page-menu .tariff-row__name{font-weight:600;}
+#page-menu .tariff-row__desc, #page-menu .tariff-note{color:#c3ccda; font-weight:500;}
+#page-menu .tariff-row__price{color:#ecc0b8; font-weight:600;}
+#page-menu .tariff-row{border-bottom-color:rgba(244,239,228,0.14);}
+#page-menu .price-note__usd, #page-menu .price-note__sep, #page-menu .info-box strong{color:#f5e9cf;}
+
+/* hover: a 1px lift, mother-of-pearl glow behind the centre-left, warmer title and price, a warm rule beneath */
+#page-menu .tariff-row{
+  position:relative; isolation:isolate; z-index:0;
+  padding-left:6px; padding-right:6px; margin:0 -6px;
+  transition:transform 550ms ease;
+}
+#page-menu .tariff-row::before{
+  content:""; position:absolute; inset:-6px -4px; pointer-events:none; z-index:-1; border-radius:6px;
+  background:radial-gradient(ellipse 48% 130% at 24% 50%, rgba(243,217,214,0.30) 0%, rgba(246,240,226,0.14) 45%, rgba(246,240,226,0) 78%);
+  opacity:0; transition:opacity 550ms ease;
+}
+#page-menu .tariff-row::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; pointer-events:none;
+  background:linear-gradient(90deg, rgba(243,217,214,0) 0%, rgba(243,217,214,0.55) 30%, rgba(245,233,207,0.4) 60%, rgba(245,233,207,0) 100%);
+  opacity:0; transition:opacity 550ms ease;
+}
+#page-menu .tariff-row__name, #page-menu .tariff-row__price{transition:color 550ms ease;}
+#page-menu .tariff-row:hover, #page-menu .tariff-row.is-lit{transform:translateY(-1px);}
+#page-menu .tariff-row:hover::before, #page-menu .tariff-row:hover::after,
+#page-menu .tariff-row.is-lit::before, #page-menu .tariff-row.is-lit::after{opacity:1;}
+#page-menu .tariff-row:hover .tariff-row__name, #page-menu .tariff-row.is-lit .tariff-row__name{color:#fffaf0;}
+#page-menu .tariff-row:hover .tariff-row__price, #page-menu .tariff-row.is-lit .tariff-row__price{color:#f5cdb8;}
+#page-menu .tariff-group__head{border-bottom-color:rgba(246,231,170,0.55) !important;}
+#page-menu .tariff-panel{background:rgba(255,253,248,0.06); border:1px solid rgba(255,253,248,0.12);}
+#page-menu .tariff-panel.alt{background:rgba(246,231,170,0.09); border-color:rgba(246,231,170,0.25);}
+#page-menu .price-note{background:rgba(255,253,248,0.07); border-color:rgba(246,231,170,0.45); color:rgba(255,253,248,0.82);}
+#page-menu .info-box{background:rgba(245,233,207,0.10); border-left-color:#e7b8b0; color:#d9d3c6;}
+
+/* ---------- Page switching ---------- */
+.page{display:none;}
+.page.is-active{display:block;}
+
+/* ---------- misc ---------- */
+.center{text-align:center;}
+.small-caps{font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);}
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="#home" class="wordmark" data-nav="home">Atelier Sonnentau</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-scrim" id="navScrim"></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-nav="home">Home</a></li>
+      <li><a href="#menu" data-nav="menu">Menu</a></li>
+      <li><a href="#about" data-nav="about">About</a></li>
+      <li><a href="#commission" data-nav="commission" class="nav-cta">Commission a Reading</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HOME ================= -->
+<section id="page-home" class="page">
+
+  <div class="horizon">
+    <svg class="horizon__stars" id="heroStars" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="120" cy="90" r="1.4" fill="#25282b"/>
+      <circle cx="240" cy="60" r="1" fill="#25282b"/>
+      <circle cx="340" cy="130" r="1.6" fill="#bd4141"/>
+      <circle cx="480" cy="50" r="1" fill="#25282b"/>
+      <circle cx="600" cy="100" r="1.2" fill="#25282b"/>
+      <circle cx="760" cy="70" r="1" fill="#25282b"/>
+      <circle cx="900" cy="120" r="1.6" fill="#25282b">
+        <animate attributeName="opacity" values="0.3;0.75;0.3" keyTimes="0;0.5;1" dur="16s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1020" cy="55" r="1" fill="#25282b"/>
+      <circle cx="1100" cy="150" r="1.3" fill="#25282b"/>
+      <circle cx="60" cy="180" r="1" fill="#25282b"/>
+      <circle cx="960" cy="200" r="1" fill="#25282b"/>
+    </svg>
+    <svg class="horizon__arc" id="heroArc" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path id="eclipticPath" d="M -50 220 Q 600 -76 1250 220" fill="none" stroke="#bd4141" stroke-width="0.75" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <defs><filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.2"/></filter></defs>
+      <!-- the nine grahas: a slow procession left to right along the arc; each has its own size, colour, pace and twinkle -->
+      <g class="graha" opacity="0.92" aria-label="Sun">
+        <circle r="7.9" fill="#f2c86a" opacity="0.42" filter="url(#softGlow)"/><circle r="3.6" fill="#e2a838" stroke="#c48f2a" stroke-width="0.5"/>
+        <animateMotion dur="600s" begin="-0.0s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="7.0s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.92" aria-label="Moon">
+        <circle r="6.2" fill="#ffffff" opacity="0.42" filter="url(#softGlow)"/><circle r="2.8" fill="#eceff3" stroke="#a5b2c2" stroke-width="0.5"/>
+        <animateMotion dur="540s" begin="-77.1s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="9.5s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.92" aria-label="Mars">
+        <circle r="2.4" fill="#c84e2c" stroke="#a6402a" stroke-width="0.5"/>
+        <animateMotion dur="560s" begin="-160.0s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="6.0s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.88" aria-label="Mercury">
+        <circle r="1.8" fill="#999b9f" stroke="#777a80" stroke-width="0.5"/>
+        <animateMotion dur="420s" begin="-180.0s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.88;0.53;0.88" keyTimes="0;0.5;1" dur="4.5s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.92" aria-label="Jupiter">
+        <circle r="9.2" fill="#e8c9a0" opacity="0.42" filter="url(#softGlow)"/><circle r="4.2" fill="#d89d5c" stroke="#b07a44" stroke-width="0.5"/>
+        <animateMotion dur="720s" begin="-411.4s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="11.0s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.92" aria-label="Venus">
+        <circle r="6.6" fill="#fff4d6" opacity="0.45" filter="url(#softGlow)"/><circle r="3.0" fill="#f4dfa6" stroke="#d3b060" stroke-width="0.5"/>
+        <animateMotion dur="520s" begin="-371.4s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="8.0s" repeatCount="indefinite"/>
+      </g>
+      <g class="graha" opacity="0.92" aria-label="Saturn">
+        <circle r="3.8" fill="#d0b066" stroke="#ab8a48" stroke-width="0.5"/><ellipse rx="7.2" ry="2.1" fill="none" stroke="#b89a5a" stroke-width="0.7" transform="rotate(-18)"/>
+        <animateMotion dur="700s" begin="-600.0s" repeatCount="indefinite" calcMode="linear"><mpath href="#eclipticPath"/></animateMotion>
+        <animate attributeName="opacity" values="0.92;0.55;0.92" keyTimes="0;0.5;1" dur="10.0s" repeatCount="indefinite"/>
+      </g>
+    </svg>
+
+    <div class="hero">
+      <div class="container hero-inner">
+        <span class="wordmark-large">Atelier Sonnentau</span>
+        <p class="subtitle">jyotiṣa · remedial arts · delphic counsel</p>
+        <div class="btn-row">
+          <a href="#menu" data-nav="menu" class="btn btn-primary">View Menu</a>
+          <a href="#commission" data-nav="commission" class="btn btn-secondary books-open-only">Commission a Reading</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPICS -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <div class="accordion">
+        <div class="acc">
+          <button class="acc__btn" type="button" aria-expanded="false">
+            <span>Jyotiṣavidya</span><span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__body">
+              <p>Jyotiṣavidya is the Vedic and Hindu science and study of the celestial bodies, who are divine emanations. In Sanskrit, <em>jyoti</em> refers to light, flame, radiance — both physical and pneumatic; <em>īśa</em> means lord or supreme, and refers to the source of all creation. <em>Vidya</em> is a system of correct knowledge, like science, or scholarship — it is tied fundamentally to perception. Vidyas are considered mystical as well as material.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc">
+          <button class="acc__btn" type="button" aria-expanded="false">
+            <span>What Is a Planet?</span><span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__body">
+              <p>The planets are gods. They are referred to as <em>graha</em>, which means to seize, grasp, or take hold of. They possess us. A graha is also "one that moves," as opposed to the stars, who stay fixed in the heavens. The <em>Navagraha</em>, the nine celestial bodies, are material forms of emanations of the divine.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc">
+          <button class="acc__btn" type="button" aria-expanded="false">
+            <span>The Karmic Coil</span><span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__body">
+              <p>In this system, which is fundamentally and irreducibly a religious, empirical system, the movement of the celestial bodies is tied to what I call the karmic coil. It allows us to make an anatomical study of our souls and our lives vis-à-vis the constant theatre of divine influences that possess us. Jyotiṣavidya provides a blueprint for our development, as well as a map to our soul, which has lived many lives. Using this study of divine influences, we can trace karmic currents in our life, and enhance knowledge of our <em>svadharma</em> — our special purpose, gifts and burdens passed through our lives or lineage.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc">
+          <button class="acc__btn" type="button" aria-expanded="false">
+            <span>How?</span><span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__body">
+              <p>Jyotiṣavidya uses a wide and deep plumbing range of methods, including formulae and counting sequences, to chart this map. In theory, it is possible to itemise every element in our lives this way, to some degree; however, the dance between matter and spirit manifests according to our actions above all — this is karma. Crucially, we possess free will. Your chart will only account for a portion of your reality. It is your actions that truly matter. Jyotiṣavidya allows us to understand the waters we are wading in. It brings context to joy, suffering, trial, error, growth. It is a tool for communication with the divine through matter and action. But we are always the builders of our own fates.</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc">
+          <button class="acc__btn" type="button" aria-expanded="false">
+            <span>Areas of Focus</span><span class="acc__icon" aria-hidden="true"></span>
+          </button>
+          <div class="acc__panel">
+            <div class="acc__body">
+              <p style="margin-bottom:1.1em;">One of my talents as an astrologer is seeing karmic knots, trauma-patterns, ancestral curses, and growth nodes. I offer remedial work and curated bespoke talismans that will assist.</p>
+              <ul class="attentive-list">
+                <li>Natal strengths and vulnerabilities</li>
+                <li>Benefic and malefic influences</li>
+                <li>Karmic knots</li>
+                <li>Ancestral and repeating patterns</li>
+                <li>Trauma-patterns</li>
+                <li>Growth nodes</li>
+                <li>Yogas</li>
+                <li>Planetary periods and timing</li>
+                <li>Unusual chart combinations</li>
+                <li>Remedial possibilities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS STATUS -->
+  <div class="horizon horizon--status" id="homeStatusHorizon">
+    <svg class="horizon__stars" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="200" cy="60" r="1.2" fill="#25282b"/>
+      <circle cx="500" cy="40" r="1" fill="#bd4141"/>
+      <circle cx="800" cy="80" r="1.4" fill="#25282b"/>
+      <circle cx="1000" cy="50" r="1" fill="#25282b"/>
+    </svg>
+    <div class="container status-band" id="homeStatusBand">
+      <p class="status-title"><span class="status-dot"></span><span id="homeStatusText">Books Are Open</span></p>
+      <p id="homeStatusSub">A limited number of written commissions are accepted at a time.</p>
+      <a href="#commission" data-nav="commission" class="btn btn-primary books-open-only">Commission a Reading</a>
+      <p class="books-closed-only" style="display:none; font-style:italic; color:var(--ink-soft);">New commissions are temporarily paused while existing readings are completed.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="page-menu" class="page">
+  <section class="section--tight bg-navy-pale menu-band" style="padding-top:88px; padding-bottom:72px;">
+  <!-- lunar background: plain HTML + CSS, no SVG -->
+  <div class="menu-sky" aria-hidden="true">
+    <i class="star" style="left:9%;  top:26%; --d:7s;"></i>
+    <i class="star" style="left:23%; top:70%; --d:9s;  --s:0.8;"></i>
+    <i class="star" style="left:41%; top:18%; --d:11s; --s:0.7;"></i>
+    <i class="star" style="left:57%; top:78%; --d:8s;"></i>
+    <i class="star" style="left:71%; top:30%; --d:10s; --s:0.75;"></i>
+    <i class="star dot" style="left:33%; top:48%; --d:6s;"></i>
+    <i class="star dot" style="left:64%; top:56%; --d:12s;"></i>
+    <i class="star dot" style="left:86%; top:76%; --d:9s;"></i>
+  </div>
+  <div class="moon" id="moonBody" aria-hidden="true">
+    <span class="moon-halo"></span>
+    <span class="moon-blush"></span>
+    <span class="moon-bloom"></span>
+    <span class="moon-disc"></span>
+    <i class="dust" style="left:8%;  top:22%; --d:29s;"></i>
+    <i class="dust" style="left:84%; top:34%; --d:19s;"></i>
+    <i class="dust" style="left:72%; top:80%; --d:27s;"></i>
+    <i class="dust" style="left:18%; top:82%; --d:21s;"></i>
+  </div>
+    <div class="container center">
+      <h1 style="font-size:clamp(2.2rem,4vw,3.2rem); margin:0;">The Menu</h1>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+
+      <div class="price-note">
+        <span class="price-note__usd">All prices in USD</span>
+        <span class="price-note__sep">·</span>
+        <span>Urgent matters may add a 25% priority fee to move to the front of the queue</span>
+      </div>
+
+      <div class="tariff-group">
+        <div class="tariff-group__head"><h3>Birth Chart</h3></div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Basic Reading</span><span class="tariff-row__desc">Ātmakāraka, celestial bodies, nakṣatras, the lords of occupied houses.</span></div>
+          <div class="tariff-row__price">$150</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Full Reading</span><span class="tariff-row__desc">Ātma &amp; dārakāraka, celestial bodies, nakṣatras, the lords of all houses, yogas &amp; daśās.</span></div>
+          <div class="tariff-row__price">$250</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Comprehensive Reading</span><span class="tariff-row__desc">All of the above, amātyakāraka, aspects, planetary movements.</span></div>
+          <div class="tariff-row__price">$300</div>
+        </div>
+      </div>
+
+      <div class="tariff-group">
+        <div class="tariff-panel">
+          <div class="tariff-group__head" style="border-bottom-color:rgba(189,65,65,0.4);"><h3>Divisional Charts</h3></div>
+          <p class="tariff-note">Birth chart prerequisite.</p>
+          <div class="tariff-row"><div><span class="tariff-row__name">Navāṃśa / Marriage</span><span class="tariff-row__desc">Marriage &amp; maturation.</span></div><div class="tariff-row__price">$75</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Daśāṃśa / Career</span><span class="tariff-row__desc">Vocation &amp; professional life.</span></div><div class="tariff-row__price">$75</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Ṣaṣṭhyaṃśa / Past Life</span><span class="tariff-row__desc">Inherited &amp; past-life karma.</span></div><div class="tariff-row__price">$75</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Horā / Wealth</span><span class="tariff-row__desc">Resources &amp; material fortune.</span></div><div class="tariff-row__price">$50</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Saptāṃśa / Progeny</span><span class="tariff-row__desc">Children &amp; lineage.</span></div><div class="tariff-row__price">$50</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Saptaviṃśa / Strength</span><span class="tariff-row__desc">Vitality &amp; constitutional strength.</span></div><div class="tariff-row__price">$50</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Viṃśāṃśa / Soul-Development</span><span class="tariff-row__desc">Spiritual development.</span></div><div class="tariff-row__price">$50</div></div>
+          <div class="tariff-row"><div><span class="tariff-row__name">Triṃśāṃśa / Malignancy</span><span class="tariff-row__desc">Evil &amp; malignancy.</span></div><div class="tariff-row__price">$50</div></div>
+        </div>
+      </div>
+
+      <div class="tariff-group">
+        <div class="tariff-group__head"><h3>Synastry</h3></div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Basic Synastry</span><span class="tariff-row__desc">Compare two birth charts.</span></div>
+          <div class="tariff-row__price">$150</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Full Synastry</span><span class="tariff-row__desc">Birth &amp; marriage charts.</span></div>
+          <div class="tariff-row__price">$250</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Saptāṃśa / Progeny Synastry</span><span class="tariff-row__desc">Children &amp; lineage between charts.</span></div>
+          <div class="tariff-row__price">$75</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Synastry Consultation</span><span class="tariff-row__desc">Current transits &amp; questions. Synastry reading prerequisite.</span></div>
+            <div class="tariff-row__price">$200</div>
+        </div>
+        <div class="tariff-row">
+          <div><span class="tariff-row__name">Synastry Remedial Work</span><span class="tariff-row__desc">Remedies &amp; auspicious timing. Synastry reading prerequisite.</span></div>
+            <div class="tariff-row__price">$100</div>
+        </div>
+      </div>
+
+      <div class="tariff-group">
+        <div class="tariff-panel">
+          <div class="tariff-group__head" style="border-bottom-color:rgba(189,65,65,0.4);"><h3>Astrological &amp; Delphic Consultation</h3></div>
+          <p class="tariff-note">Birth chart prerequisite.</p>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Astrological Consultation</span><span class="tariff-row__desc">Immediate transits &amp; questions.</span></div>
+            <div class="tariff-row__price">$150</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Solar Reading</span><span class="tariff-row__desc">Specialized solar return reading for the year.</span></div>
+            <div class="tariff-row__price">$125</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Lunar Reading</span><span class="tariff-row__desc">Tracking one’s biological clock, mood regulation &amp; somatic rhythms.</span></div>
+            <div class="tariff-row__price">$125</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Astral Congress</span><span class="tariff-row__desc">Examination of the birth chart of the discarnate, to facilitate congress for the purpose of healing unresolved subtle configurations and the dissolution of grief. Limited slots.</span></div>
+            <div class="tariff-row__price">$125</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Tarot</span><span class="tariff-row__desc">Divinatory add-on to any consultation.</span></div>
+            <div class="tariff-row__price">$75</div>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:24px;">
+          <strong>Refer a Friend.</strong> You and your referral each receive 15% off an Astrological Consultation. For birth charts.
+        </div>
+      </div>
+
+      <div class="tariff-group">
+        <div class="tariff-panel alt">
+          <div class="tariff-group__head" style="border-bottom-color:rgba(189,65,65,0.4);"><h3>Remedial Arts</h3></div>
+          <p class="tariff-note">Birth chart prerequisite. Available as an add-on to any reading.</p>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">General Remedial Work</span><span class="tariff-row__desc">Astral remedies for intentional transformation &amp; karmic adaptation.</span></div>
+            <div class="tariff-row__price">$80</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Bespoke Aromatic Remedy</span><span class="tariff-row__desc">Individually composed talismanic or therapeutic aroma.</span></div>
+            <div class="tariff-row__price">from $80 each</div>
+          </div>
+          <div class="tariff-row">
+            <div><span class="tariff-row__name">Gemstone &amp; Talismanic Remedy</span><span class="tariff-row__desc">Individually sourced gemstones made into talismanic pieces.</span></div>
+            <div class="tariff-row__price">Price on request</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="center">
+        <a href="#commission" data-nav="commission" class="btn btn-primary books-open-only">Commission a Reading</a>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="page-about" class="page">
+  <section class="section--tight bg-navy-pale" style="padding-top:64px;">
+    <div class="container center">
+      <h1 style="font-size:clamp(2.2rem,4vw,3.2rem); margin:0;">The Astrologer</h1>
+    </div>
+  </section>
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <p class="bio-text">Masha is a jyotiṣika (Vedic astrologer), writer, and Delphic strategist. Her background is in biochemistry, neuropsychological science, and philosophy. Her work is rooted in Indo-European comparative syncretism, and she has a particular interest in anomalous experience, dissociative phenomena, and the phenomenology of enchantment — approached with metaphysical openness and epistemic discipline. She is currently developing a syncretic solar philosophy, an integrative remedial practice, and working on her debut novel.</p>
+    </div>
+  </section>
+</section>
+
+<!-- ================= COMMISSION ================= -->
+<section id="page-commission" class="page">
+
+  <div class="horizon">
+    <svg class="horizon__stars" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <circle cx="150" cy="60" r="1.2" fill="#25282b"/>
+      <circle cx="450" cy="40" r="1" fill="#bd4141"/>
+      <circle cx="750" cy="70" r="1.4" fill="#25282b"/>
+      <circle cx="1050" cy="50" r="1" fill="#25282b"/>
+    </svg>
+    <div class="container status-band" id="commissionStatusBand" style="padding:72px 0 56px;">
+      <h1 style="font-size:clamp(2.2rem,4vw,3.2rem); margin:0;">Commission a Reading</h1>
+      <p class="status-title" style="display:none;"><span class="status-dot"></span><span id="commissionStatusText">Books Are Open</span></p>
+      <p id="commissionStatusSub" style="display:none;"></p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <section class="section bg-palest">
+    <div class="container">
+
+      <div class="form-panel" id="commissionFormPanel">
+        <p class="eyebrow">Request a Reading</p>
+        <p class="form-hint" style="margin-bottom:2em;">After your request is received, I will contact you with payment details and everything you need to begin.</p>
+
+        <form id="commissionForm">
+          <div class="form-group">
+            <label for="fName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fName" name="fName" required>
+          </div>
+
+          <div class="form-group">
+            <label>Returning Client? <span class="req">*</span></label>
+            <div class="radio-set">
+              <label class="radio-option"><input type="radio" name="returningClient" value="yes" required> Yes, returning client</label>
+              <label class="radio-option"><input type="radio" name="returningClient" value="no"> No, new client</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fEmail">Email Address <span class="req">*</span></label>
+            <input type="email" id="fEmail" name="fEmail" required>
+          </div>
+
+          <div class="form-group">
+            <label>Requested Reading(s) <span class="req">*</span></label>
+            <p class="form-hint" style="margin-top:-4px; margin-bottom:10px;">You may select more than one.</p>
+            <div class="menu-select">
+
+              <div class="menu-select__group-label">Birth Chart</div>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="150" data-name="Basic Reading" data-prereq="0" data-birthchart="1"> Basic Reading</span>
+                <span class="menu-option__price">$150</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="250" data-name="Full Reading" data-prereq="0" data-birthchart="1"> Full Reading</span>
+                <span class="menu-option__price">$250</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="300" data-name="Comprehensive Reading" data-prereq="0" data-birthchart="1"> Comprehensive Reading</span>
+                <span class="menu-option__price">$300</span>
+              </label>
+
+              <div class="menu-select__group-label">Divisional Charts <em>— birth chart prerequisite</em></div>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="75" data-name="Navāṃśa / Marriage" data-prereq="1"> Navāṃśa / Marriage</span>
+                <span class="menu-option__price">$75</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="75" data-name="Daśāṃśa / Career" data-prereq="1"> Daśāṃśa / Career</span>
+                <span class="menu-option__price">$75</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="75" data-name="Ṣaṣṭhyaṃśa / Past Life" data-prereq="1"> Ṣaṣṭhyaṃśa / Past Life</span>
+                <span class="menu-option__price">$75</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="50" data-name="Horā / Wealth" data-prereq="1"> Horā / Wealth</span>
+                <span class="menu-option__price">$50</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="50" data-name="Saptāṃśa / Progeny" data-prereq="1"> Saptāṃśa / Progeny</span>
+                <span class="menu-option__price">$50</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="50" data-name="Saptaviṃśa / Strength" data-prereq="1"> Saptaviṃśa / Strength</span>
+                <span class="menu-option__price">$50</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="50" data-name="Viṃśāṃśa / Soul-Development" data-prereq="1"> Viṃśāṃśa / Soul-Development</span>
+                <span class="menu-option__price">$50</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="50" data-name="Triṃśāṃśa / Malignancy" data-prereq="1"> Triṃśāṃśa / Malignancy</span>
+                <span class="menu-option__price">$50</span>
+              </label>
+
+              <div class="menu-select__group-label">Synastry</div>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="150" data-name="Basic Synastry" data-prereq="0" data-synastry="1"> Basic Synastry</span>
+                <span class="menu-option__price">$150</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="250" data-name="Full Synastry" data-prereq="0" data-synastry="1"> Full Synastry</span>
+                <span class="menu-option__price">$250</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="75" data-name="Saptāṃśa / Progeny Synastry" data-prereq="0" data-synastry="1"> Saptāṃśa / Progeny Synastry</span>
+                <span class="menu-option__price">$75</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="200" data-name="Synastry Consultation" data-prereq="0" data-synprereq="1" data-consult="1" data-synastry-consult="1"> Synastry Consultation <em style="font-size:0.8rem; color:var(--ink-soft);">— synastry reading prerequisite</em></span>
+                <span class="menu-option__price">$200</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="100" data-name="Synastry Remedial Work" data-prereq="0" data-addon="synastry"> Synastry Remedial Work <em style="font-size:0.8rem; color:var(--ink-soft);">— with a Synastry Consultation</em></span>
+                <span class="menu-option__price">$100</span>
+              </label>
+
+              <div class="menu-select__group-label">Astrological &amp; Delphic Consultation <em>— birth chart prerequisite</em></div>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="150" data-name="Astrological Consultation" data-prereq="1" data-consult="1"> Astrological Consultation</span>
+                <span class="menu-option__price">$150</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="125" data-name="Solar Reading" data-prereq="1" data-consult="1"> Solar Reading</span>
+                <span class="menu-option__price">$125</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="125" data-name="Lunar Reading" data-prereq="1" data-consult="1"> Lunar Reading</span>
+                <span class="menu-option__price">$125</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="125" data-name="Astral Congress" data-prereq="1" data-consult="1"> Astral Congress <em style="font-size:0.8rem; color:var(--ink-soft);">— limited slots</em></span>
+                <span class="menu-option__price">$125</span>
+              </label>
+              <label class="menu-option" id="tarotOption">
+                <span><input type="checkbox" name="fService" data-price="75" data-name="Tarot" data-prereq="0" data-addon="consult"> Tarot <em style="font-size:0.8rem; color:var(--ink-soft);">— add-on to any consultation</em></span>
+                <span class="menu-option__price">$75</span>
+              </label>
+
+              <div class="menu-select__group-label">Remedial Arts <em>— add-on to any reading; birth chart prerequisite</em></div>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="80" data-name="General Remedial Work" data-prereq="1"> General Remedial Work</span>
+                <span class="menu-option__price">$80</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-price="80" data-name="Bespoke Aromatic Remedy" data-prereq="1"> Bespoke Aromatic Remedy</span>
+                <span class="menu-option__price">from $80 each</span>
+              </label>
+              <label class="menu-option">
+                <span><input type="checkbox" name="fService" data-name="Gemstone &amp; Talismanic Remedy" data-prereq="1"> Gemstone &amp; Talismanic Remedy</span>
+                <span class="menu-option__price">price on request</span>
+              </label>
+
+            </div>
+
+            <div class="inline-note" id="prereqNote"></div>
+
+            <div class="addon-box">
+              <label>
+                <input type="checkbox" id="fUrgent">
+                <span>
+                  Urgent request
+                  <small>Adds a 25% priority fee to move your request to the front of the queue.</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method <span class="req">*</span></label>
+            <div class="method-cards">
+              <label class="method-card">
+                <input type="radio" name="paymentMethod" value="paypal" required> PayPal
+                <small>United States / International</small>
+              </label>
+              <label class="method-card">
+                <input type="radio" name="paymentMethod" value="etransfer"> Interac e-Transfer
+                <small>Canada</small>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fInfo">Additional Info <span class="req">*</span></label>
+            <textarea id="fInfo" name="fInfo" required placeholder="What you would like investigated, the period you would like assessed, or anything else I should know."></textarea>
+          </div>
+
+          <div class="price-estimate">
+            <p class="eyebrow" style="margin-bottom:0.6em;">Estimated Total</p>
+            <div id="estimateBody">
+              <p class="price-estimate__empty">Select a reading above to see an estimated total.</p>
+            </div>
+            <div class="price-estimate__total" id="estimateTotalRow" style="display:none;">
+              <span>Estimated Total</span>
+              <span id="estimateTotalAmount">$0.00</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <p class="small-caps" style="margin-bottom:1em;">A minimum 50% payment reserves your commission. Payment in full is also welcome. If a deposit is paid, the remaining balance is due before delivery of the completed reading.</p>
+            <label class="checkbox-line">
+              <input type="checkbox" id="fAck" required>
+              I understand that my reading is not reserved until payment has been received.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-pale" style="width:100%;">Request a Reading</button>
+        </form>
+      </div>
+
+      <div class="form-panel confirmation-panel" id="confirmationPanel">
+        <p class="eyebrow">Request Received</p>
+        <h3>Thank you.</h3>
+        <p>I will be in touch by email with payment details and everything you need to begin.</p>
+      </div>
+
+      <div class="form-panel center books-closed-only" id="closedPanel" style="display:none;">
+        <p class="eyebrow">Books Are Closed</p>
+        <h3>New commissions are temporarily paused</h3>
+        <p style="color:var(--ink-soft);">New commissions are temporarily paused while existing readings are completed. Please check back once books have reopened.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <p class="eyebrow center">Frequently Asked Questions</p>
+      <div class="faq-item">
+        <h4>When will I receive my intake?</h4>
+        <p>Your intake is sent by email once your deposit has been received.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How will I receive my reading?</h4>
+        <p>Your reading will be sent as a PDF document via email.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Which readings require a birth chart?</h4>
+        <p>Divisional charts, astrological consultations, and remedial work require a completed birth chart reading on file. Synastry consultations require a completed synastry reading.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How can I pay?</h4>
+        <p>United States and international clients may pay through PayPal. Canadian clients may pay by Interac e-Transfer.</p>
+      </div>
+      <div class="faq-item" style="border-bottom:none;">
+        <h4>What if my request is urgent?</h4>
+        <p>A 25% priority fee may be added to any commission to move your request to the front of the queue.</p>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="#home" data-nav="home" class="wordmark" style="font-size:1.9rem;">Atelier Sonnentau</a>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#menu" data-nav="menu">Menu</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#commission" data-nav="commission">Commission</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Atelier Sonnentau</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   BOOKS STATUS — set to false to close the books
+   ============================================================ */
+const BOOKS_OPEN = true;
+
+function setDawn(open){
+  const h = document.getElementById('homeStatusHorizon');
+  if(!h) return;
+  h.classList.toggle('is-closed', !open);
+  h.classList.remove('is-open');
+  if(open){
+    /* two frames later so the 8s brightening actually transitions */
+    requestAnimationFrame(() => requestAnimationFrame(() => h.classList.add('is-open')));
+  }
+}
+
+function applyBooksStatus(){
+  document.querySelectorAll('.books-open-only').forEach(el => el.style.display = BOOKS_OPEN ? '' : 'none');
+  document.querySelectorAll('.books-closed-only').forEach(el => el.style.display = BOOKS_OPEN ? 'none' : '');
+
+  const homeText = document.getElementById('homeStatusText');
+  const homeSub = document.getElementById('homeStatusSub');
+  const homeBand = document.getElementById('homeStatusBand');
+  const commissionText = document.getElementById('commissionStatusText');
+  const commissionSub = document.getElementById('commissionStatusSub');
+  const commissionBand = document.getElementById('commissionStatusBand');
+  const formPanel = document.getElementById('commissionFormPanel');
+  const closedPanel = document.getElementById('closedPanel');
+
+  if(BOOKS_OPEN){
+    homeText.textContent = 'Books Are Open';
+    homeSub.textContent = 'A limited number of written commissions are accepted at a time.';
+    commissionText.textContent = 'Books Are Open';
+    commissionSub.textContent = 'Currently accepting new reading commissions.';
+    homeBand.classList.remove('is-closed');
+    commissionBand.classList.remove('is-closed');
+    setDawn(true);
+    formPanel.style.display = '';
+    closedPanel.style.display = 'none';
+  } else {
+    homeText.textContent = 'Books Are Closed';
+    homeSub.textContent = '';
+    commissionText.textContent = 'Books Are Closed';
+    commissionSub.textContent = 'New commissions are temporarily paused while existing readings are completed.';
+    homeBand.classList.add('is-closed');
+    commissionBand.classList.add('is-closed');
+    setDawn(false);
+    formPanel.style.display = 'none';
+    closedPanel.style.display = '';
+  }
+}
+
+/* ============================================================
+   PAGE NAVIGATION
+   ============================================================ */
+const pages = document.querySelectorAll('.page');
+const navAnchors = document.querySelectorAll('[data-nav]');
+
+function setNav(open){
+  document.getElementById('navLinks').classList.toggle('is-open', open);
+  document.getElementById('navScrim').classList.toggle('is-open', open);
+  document.getElementById('navToggle').classList.toggle('is-open', open);
+  document.getElementById('navToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.classList.toggle('nav-open', open);
+}
+
+function showPage(name){
+  pages.forEach(p => p.classList.toggle('is-active', p.id === 'page-' + name));
+  navAnchors.forEach(a => a.classList.toggle('is-active', a.getAttribute('data-nav') === name));
+  window.scrollTo({top:0, behavior:'auto'});
+  setNav(false);
+  if(name === 'home') setDawn(BOOKS_OPEN);
+}
+
+function routeFromHash(){
+  const valid = ['home','menu','about','commission'];
+  const hash = (window.location.hash || '#home').replace('#','');
+  showPage(valid.includes(hash) ? hash : 'home');
+}
+
+navAnchors.forEach(a => {
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    const name = this.getAttribute('data-nav');
+    window.location.hash = name;
+    showPage(name);
+  });
+});
+
+window.addEventListener('hashchange', routeFromHash);
+
+document.getElementById('navToggle').addEventListener('click', function(){
+  setNav(!document.getElementById('navLinks').classList.contains('is-open'));
+});
+document.getElementById('navScrim').addEventListener('click', () => setNav(false));
+
+/* ============================================================
+   COMMISSION FORM
+   ============================================================ */
+const serviceBoxes = document.querySelectorAll('input[name="fService"]');
+const returningRadios = document.querySelectorAll('input[name="returningClient"]');
+const urgentCheckbox = document.getElementById('fUrgent');
+const prereqNote = document.getElementById('prereqNote');
+const menuOptions = document.querySelectorAll('.menu-option');
+const methodCards = document.querySelectorAll('.method-card');
+const estimateBody = document.getElementById('estimateBody');
+const estimateTotalRow = document.getElementById('estimateTotalRow');
+const estimateTotalAmount = document.getElementById('estimateTotalAmount');
+
+function getChecked(){
+  return Array.from(document.querySelectorAll('input[name="fService"]:checked'));
+}
+
+function hasBirthChartSelected(){
+  return Array.from(document.querySelectorAll('input[name="fService"][data-birthchart="1"]'))
+    .some(b => b.checked);
+}
+
+function isNewClient(){
+  const returning = document.querySelector('input[name="returningClient"]:checked');
+  return !!(returning && returning.value === 'no');
+}
+
+/* New clients must have a birth chart on the order before prerequisite
+   readings (divisional charts, consultations, remedial work) can be selected. */
+function enforcePrereq(){
+  const lock = isNewClient() && !hasBirthChartSelected();
+
+  document.querySelectorAll('input[name="fService"][data-prereq="1"]').forEach(box => {
+    const option = box.closest('.menu-option');
+    if(lock){
+      box.checked = false;
+      box.disabled = true;
+      option.classList.add('is-locked');
+    } else {
+      box.disabled = false;
+      option.classList.remove('is-locked');
+    }
+  });
+
+  /* Synastry Consultation: new clients need a synastry reading on the order first */
+  const synLock = isNewClient() && !Array.from(document.querySelectorAll('input[name="fService"][data-synastry="1"]')).some(b => b.checked);
+  document.querySelectorAll('input[name="fService"][data-synprereq="1"]').forEach(box => {
+    const option = box.closest('.menu-option');
+    if(synLock){ box.checked = false; box.disabled = true; option.classList.add('is-locked'); }
+    else { box.disabled = false; option.classList.remove('is-locked'); }
+  });
+
+
+  /* Add-ons unlock only alongside their primary reading */
+  const consultSelected = Array.from(document.querySelectorAll('input[name="fService"][data-consult="1"]')).some(b => b.checked);
+  const synastryConsultSelected = Array.from(document.querySelectorAll('input[name="fService"][data-synastry-consult="1"]')).some(b => b.checked);
+  const gates = {
+    consult: consultSelected,                              // Tarot: any consultation
+    synastry: synastryConsultSelected                       // Synastry remedial add-on
+  };
+  document.querySelectorAll('input[name="fService"][data-addon]').forEach(box => {
+    const option = box.closest('.menu-option');
+    if(!gates[box.dataset.addon]){
+      box.checked = false;
+      box.disabled = true;
+      option.classList.add('is-locked');
+    } else {
+      box.disabled = false;
+      option.classList.remove('is-locked');
+    }
+  });
+
+  /* hide the note once whatever it was about is no longer locked */
+  if(prereqNote.dataset.for){
+    const box = document.querySelector('input[name="fService"][data-name="' + prereqNote.dataset.for + '"]');
+    if(!box || !box.disabled){ prereqNote.classList.remove('is-visible'); prereqNote.dataset.for = ''; }
+  }
+}
+
+function highlight(){
+  menuOptions.forEach(opt => opt.classList.toggle('is-selected', opt.querySelector('input').checked));
+  methodCards.forEach(card => card.classList.toggle('is-selected', card.querySelector('input').checked));
+}
+
+function updateEstimate(){
+  const selected = getChecked();
+  let rows = [];
+  let total = 0;
+  let hasNumeric = false;
+  let hasQuote = false;
+
+  selected.forEach(sel => {
+    const name = sel.dataset.name;
+    if(sel.dataset.price){
+      const price = parseFloat(sel.dataset.price);
+      rows.push([name, '$' + price.toFixed(2)]);
+      total += price;
+      hasNumeric = true;
+    } else {
+      rows.push([name, 'price on request']);
+      hasQuote = true;
+    }
+  });
+
+  if(urgentCheckbox.checked && hasNumeric){
+    const fee = total * 0.25;
+    rows.push(['Priority fee (25%)', '$' + fee.toFixed(2)]);
+    total += fee;
+  }
+
+  if(rows.length === 0){
+    estimateBody.innerHTML = '<p class="price-estimate__empty">Select a reading above to see an estimated total.</p>';
+    estimateTotalRow.style.display = 'none';
+    estimateTotalAmount.textContent = '$0.00';
+    return;
+  }
+
+  estimateBody.innerHTML = rows.map(r =>
+    '<div class="price-estimate__row"><span>' + r[0] + '</span><span>' + r[1] + '</span></div>'
+  ).join('');
+
+  if(hasNumeric){
+    estimateTotalRow.style.display = 'flex';
+    estimateTotalAmount.textContent = '$' + total.toFixed(2) + ' USD' + (hasQuote ? ' + items priced on request' : '');
+  } else {
+    estimateTotalRow.style.display = 'none';
+  }
+}
+
+serviceBoxes.forEach(b => b.addEventListener('change', () => { enforcePrereq(); highlight(); updateEstimate(); }));
+returningRadios.forEach(r => r.addEventListener('change', () => { enforcePrereq(); highlight(); updateEstimate(); }));
+urgentCheckbox.addEventListener('change', updateEstimate);
+methodCards.forEach(card => card.querySelector('input').addEventListener('change', highlight));
+
+menuOptions.forEach(opt => {
+  opt.addEventListener('click', function(){
+    const box = opt.querySelector('input');
+    if(!box.disabled) return;
+    let msg;
+    if(box.dataset.addon === 'consult'){
+      msg = 'Tarot is available only as an add-on to a consultation.';
+    } else if(box.dataset.addon === 'synastry'){
+      msg = 'Synastry Remedial Work is available only alongside a Synastry Consultation.';
+    } else if(box.dataset.synprereq === '1'){
+      msg = 'This option is only available alongside or after completing synastry reading prerequisite.';
+    } else {
+      msg = 'This option is only available alongside or after completing birth chart prerequisite.';
+    }
+    prereqNote.textContent = msg;
+    prereqNote.dataset.for = box.dataset.name;
+    prereqNote.classList.add('is-visible');
+  });
+});
+
+document.getElementById('commissionForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  if(getChecked().length === 0){
+    alert('Please select at least one reading.');
+    return;
+  }
+  document.getElementById('commissionFormPanel').style.display = 'none';
+  document.getElementById('confirmationPanel').classList.add('is-visible');
+  document.getElementById('confirmationPanel').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+/* ============================================================
+   HOME ACCORDION
+   ============================================================ */
+document.querySelectorAll('.acc__btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    const panel = btn.nextElementSibling;
+    btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    panel.style.maxHeight = open ? '0' : panel.scrollHeight + 'px';
+  });
+});
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.acc__btn[aria-expanded="true"]').forEach(btn => {
+    btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+  });
+});
+
+/* ============================================================
+   CELESTIAL MOTION — paused when the visitor prefers reduced motion
+   ============================================================ */
+(function(){
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function apply(){
+    ['heroStars','heroArc','menuMoon'].forEach(id => {
+      const svg = document.getElementById(id);
+      if(!svg) return;
+      if(mq.matches){ svg.pauseAnimations(); } else { svg.unpauseAnimations(); }
+    });
+  }
+  apply();
+  if(mq.addEventListener) mq.addEventListener('change', apply);
+})();
+
+/* ============================================================
+   TOUCH: a tap lights a menu row (or the moon) the way hover does
+   ============================================================ */
+(function(){
+  function light(el){
+    el.classList.add('is-lit');
+    setTimeout(() => el.classList.remove('is-lit'), 1100);
+  }
+  document.querySelectorAll('#page-menu .tariff-row').forEach(row => {
+    row.addEventListener('touchstart', () => light(row), {passive:true});
+  });
+  const moon = document.getElementById('moonBody');
+  if(moon) moon.addEventListener('touchstart', () => light(moon), {passive:true});
+})();
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+applyBooksStatus();
+routeFromHash();
+enforcePrereq();
+updateEstimate();
+highlight();
+</script>
+
+</body>
+</html>
